@@ -1,3 +1,5 @@
-# wimpyML
-Python library with wimpy implementations of common ML algorithms that I wrote in the process of learning them.
-![wimpy](https://user-images.githubusercontent.com/76529011/171127620-09f5b6d0-c252-4f81-8220-0c0550d9b342.gif)
+<div align = center>
+<a href = "github.com/plugyawn"><img width="220px" height="220px" src= "https://user-images.githubusercontent.com/76529011/171129090-0d978727-e97c-492b-90d3-69db1196cc1b.png"></a>
+</div>
+
+Wimpy is a non-flexible, non-scalable, very wimpy machine-learning library built on numpy and pandas.  Notably, it contains very unoptimized implementations of popular machine learning algorithms, **from scratch**, without scikit-learn or tensorflow or pytorch.

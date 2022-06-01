@@ -1,4 +1,6 @@
 from operator import index
+from tokenize import String
+from typing import Any
 import numpy as np # imports a fast numerical programming library
 import scipy as sp #imports stats functions, amongst other things
 import matplotlib as mpl # this actually imports matplotlib
@@ -32,3 +34,32 @@ class common_functions:
         ------
         error : float, the mean-square error of predictions wrt the sample."""
         return 1/(sample.shape[0])*(np.sum(sample-predictions))**2
+
+
+class dataset_access:
+    """
+    Datasets included in the library to test various kinds of regressions.
+    """
+
+    def dataset_load(dataset_name: String) -> Any:
+        """
+        Load datasets based on given parameters.
+        Parameters
+        ----------
+        dataset_name : String, name of the dataset that we are accessing.
+        
+        Available Datasets
+        ------------------
+        "simple_linear_regression" : simple linear regression dataset from towardsdatascience.com
+        """
+        if dataset_name == "simple_linear_regression":
+
+            dataset = pd.read_csv("./datasets/simple_linear_regression.csv")
+            dataset.insert(1, "C", np.ones(dataset.shape[0]))
+
+            inputs = dataset.copy()
+            inputs = inputs.drop("Y", axis = 1)
+
+            outputs = dataset.copy().drop(["X", "C"], axis = 1)
+
+            return (inputs, outputs)

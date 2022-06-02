@@ -51,15 +51,28 @@ class dataset_access:
         Available Datasets
         ------------------
         "simple_linear_regression" : simple linear regression dataset from towardsdatascience.com
+        "simple_binary_classification" : simple logistic regression dataset sampled from the iris dataset
         """
         if dataset_name == "simple_linear_regression":
 
             dataset = pd.read_csv("./datasets/simple_linear_regression.csv")
-            dataset.insert(1, "C", np.ones(dataset.shape[0]))
 
             inputs = dataset.copy()
             inputs = inputs.drop("Y", axis = 1)
 
-            outputs = dataset.copy().drop(["X", "C"], axis = 1)
+            outputs = dataset.copy().drop(["X"], axis = 1)
 
             return (inputs, outputs)
+
+        if dataset_name == "simple_binary_classification":
+
+            dataset = pd.read_csv("./datasets/simple_binary_classification.csv").drop(["REM"], axis = 1)
+            inputs = dataset.copy()
+            inputs = dataset.drop("Y", axis = 1)
+
+            outputs = dataset.copy().drop(["X1", "X2"], axis = 1)
+            
+            return (inputs, outputs)
+
+
+            

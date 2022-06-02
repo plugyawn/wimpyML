@@ -4,4 +4,6 @@ testfile.py
 __pycache__
 *.pyc
 __pycache__
+*.ipynb
+notes.md
 

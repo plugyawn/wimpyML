@@ -43,14 +43,16 @@ class batch_gradient_descent:
         -------
         self: object
         """
+        try: inputs.insert(1, "C", np.ones(inputs.shape[0]))
+        except: pass
         try:
             thetas = self.thetas
         except:
             thetas = np.ones((inputs.shape[1], 1))
 
         for _ in range(self.iterations):
-            y_predictions = np.dot(inputs, thetas)
-            residual_values = outputs - y_predictions
+            output_predictions = np.dot(inputs, thetas)
+            residual_values = outputs - output_predictions
             gradient_vector = np.dot(inputs.T, residual_values)
             thetas += self.learn_rate/outputs.shape[0]*gradient_vector
 
@@ -101,6 +103,7 @@ class stochastic_gradient_descent:
         -------
         self: object
         """
+        inputs.insert(1, "C", np.ones(inputs.shape[0]))
         thetas = np.ones((2,1))
         batch_iterations = self.iterations//outputs.shape[0]
 
@@ -132,3 +135,8 @@ class stochastic_gradient_descent:
         """
 
         return np.dot(inputs, self.thetas)
+
+class bayesian_linear_regression:
+    """
+    Bayesian Linear Regression as opposed to Frequentist Linear Regression.
+    """

@@ -32,32 +32,32 @@ class RMSprop:
             self.params[i] -= self.learning_rate * grads[i] / (np.sqrt(self.exp_avg[i]) + self.epsilon)
 
 
-## Sanity check
-import numpy as np
-import torch
-import torch.optim as torch_optim
+# ## Sanity check
+# import numpy as np
+# import torch
+# import torch.optim as torch_optim
 
-# Define your model parameters
-params = [np.random.rand(3, 3), np.random.rand(3)]
-torch_params = [torch.tensor(param, requires_grad=True) for param in params]
+# # Define your model parameters
+# params = [np.random.rand(3, 3), np.random.rand(3)]
+# torch_params = [torch.tensor(param, requires_grad=True) for param in params]
 
-# Create the RMSprop optimizers
-custom_optimizer = RMSprop(params, learning_rate=0.01, decay=0.9)
-torch_optimizer = torch_optim.RMSprop(torch_params, lr=0.01 , alpha=0.9, eps=1e-07 )
+# # Create the RMSprop optimizers
+# custom_optimizer = RMSprop(params, learning_rate=0.01, decay=0.9)
+# torch_optimizer = torch_optim.RMSprop(torch_params, lr=0.01 , alpha=0.9, eps=1e-07 )
 
-# Compute gradients (Typically done using your model and loss function, but here we'll just make some up)
-grads = [np.random.rand(3, 3), np.random.rand(3)]
-torch_grads = [torch.tensor(grad) for grad in grads]
+# # Compute gradients (Typically done using your model and loss function, but here we'll just make some up)
+# grads = [np.random.rand(3, 3), np.random.rand(3)]
+# torch_grads = [torch.tensor(grad) for grad in grads]
 
-# Parameter update using custom RMSprop
-custom_optimizer.step(grads)
+# # Parameter update using custom RMSprop
+# custom_optimizer.step(grads)
 
-# Parameter update using torch RMSprop
-torch_optimizer.zero_grad()
-for i in range(len(torch_params)):
-    torch_params[i].backward(torch_grads[i])
-torch_optimizer.step()
+# # Parameter update using torch RMSprop
+# torch_optimizer.zero_grad()
+# for i in range(len(torch_params)):
+#     torch_params[i].backward(torch_grads[i])
+# torch_optimizer.step()
 
 
-print(torch_params)
-print(params)
+# print(torch_params)
+# print(params)

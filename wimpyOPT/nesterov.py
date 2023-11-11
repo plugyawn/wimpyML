@@ -30,32 +30,32 @@ class NesterovSGD:
         
 
 
-## Sanity check
-import numpy as np
-import torch
-import torch.optim as torch_optim
+# ## Sanity check
+# import numpy as np
+# import torch
+# import torch.optim as torch_optim
 
-# Define your model parameters
-params = [np.random.rand(3, 3), np.random.rand(3)]
-torch_params = [torch.tensor(param, requires_grad=True) for param in params]
+# # Define your model parameters
+# params = [np.random.rand(3, 3), np.random.rand(3)]
+# torch_params = [torch.tensor(param, requires_grad=True) for param in params]
 
-# Create the SGD optimizers
-custom_optimizer = NesterovSGD(params, learning_rate=0.01, momentum=0.9)
-torch_optimizer = torch_optim.SGD(torch_params, lr=0.01, momentum=0.9,nesterov=True)
+# # Create the SGD optimizers
+# custom_optimizer = NesterovSGD(params, learning_rate=0.01, momentum=0.9)
+# torch_optimizer = torch_optim.SGD(torch_params, lr=0.01, momentum=0.9,nesterov=True)
 
-# Compute gradients (Typically done using your model and loss function, but here we'll just make some up)
-grads = [np.random.rand(3, 3), np.random.rand(3)]
-torch_grads = [torch.tensor(grad) for grad in grads]
+# # Compute gradients (Typically done using your model and loss function, but here we'll just make some up)
+# grads = [np.random.rand(3, 3), np.random.rand(3)]
+# torch_grads = [torch.tensor(grad) for grad in grads]
 
-# Parameter update using custom SGD
-custom_optimizer.step(grads)
+# # Parameter update using custom SGD
+# custom_optimizer.step(grads)
 
-# Parameter update using torch SGD
-torch_optimizer.zero_grad()
-for i in range(len(torch_params)):
-    torch_params[i].backward(torch_grads[i])
-torch_optimizer.step()
+# # Parameter update using torch SGD
+# torch_optimizer.zero_grad()
+# for i in range(len(torch_params)):
+#     torch_params[i].backward(torch_grads[i])
+# torch_optimizer.step()
 
 
-print(torch_params)
-print(params)
+# print(torch_params)
+# print(params)

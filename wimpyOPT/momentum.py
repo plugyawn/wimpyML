@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class SGD:
     """Stochastic Gradient Descent with momentum.
     Parameters
@@ -11,12 +12,14 @@ class SGD:
     Momentum, checks how much to let the previous update influence the current.
     Default is 0.9.
     """
-    def __init__(self, params,learning_rate=0.01,momentum=0.9):
+
+    def __init__(self, params, learning_rate=0.01, momentum=0.9):
         self.params = params
         self.learning_rate = learning_rate
         self.momentum = momentum
         self.velocity = [np.zeros(param.shape) for param in params]
-    def step(self,grads):
+
+    def step(self, grads):
         """Update the parameters with the given gradients.
         Parameters
         ----------
@@ -24,9 +27,10 @@ class SGD:
         List of gradients for each layer.
         """
         for i in range(len(self.params)):
-            self.velocity[i] = self.momentum * self.velocity[i] - self.learning_rate * grads[i]
+            self.velocity[i] = self.momentum * \
+                self.velocity[i] - self.learning_rate * grads[i]
             self.params[i] += self.velocity[i]
-        
+
 # # Example usage:
 # # Define your model parameters
 # params = [np.random.rand(3, 3), np.random.rand(3)]
@@ -39,7 +43,6 @@ class SGD:
 
 # # Update parameters using SGD
 # optimizer.step(grads)
-
 
 
 # ## Sanity check

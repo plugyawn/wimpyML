@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Adam():
     """Adam optimizer.
     ----------
@@ -17,6 +18,7 @@ class Adam():
     A small constant for numerical stability.
     default is 1e-7.
     """
+
     def __init__(self, params, learning_rate=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7):
         self.params = params
         self.learning_rate = learning_rate
@@ -25,7 +27,8 @@ class Adam():
         self.epsilon = epsilon
         self.m = [np.zeros(param.shape) for param in params]
         self.v = [np.zeros(param.shape) for param in params]
-    def step(self,grads):
+
+    def step(self, grads):
         """Update parameters.
         ----------
         Parameters:
@@ -34,10 +37,12 @@ class Adam():
         """
         for i in range(len(self.params)):
             self.m[i] = self.beta_1 * self.m[i] + (1 - self.beta_1) * grads[i]
-            self.v[i] = self.beta_2 * self.v[i] + (1 - self.beta_2) * grads[i]**2
+            self.v[i] = self.beta_2 * self.v[i] + \
+                (1 - self.beta_2) * grads[i]**2
             m_hat = self.m[i] / (1 - self.beta_1)
             v_hat = self.v[i] / (1 - self.beta_2)
-            self.params[i] -= self.learning_rate * m_hat / (np.sqrt(v_hat) + self.epsilon)
+            self.params[i] -= self.learning_rate * \
+                m_hat / (np.sqrt(v_hat) + self.epsilon)
 
 # # ## Sanity check
 # import numpy as np
@@ -68,5 +73,3 @@ class Adam():
 
 # print(torch_params)
 # print(params)
-
-

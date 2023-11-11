@@ -7,8 +7,9 @@ class SGD:
     learning_rate : float
     Learning rate, checks how much the weights are updated at each iteration.
     Default is 0.01.
-    n_iter : int
-    Number of iterations. Default is 10000.
+    momentum : float
+    Momentum, checks how much to let the previous update influence the current.
+    Default is 0.9.
     """
     def __init__(self, params,learning_rate=0.01,momentum=0.9):
         self.params = params

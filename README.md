@@ -11,4 +11,4 @@
 -----------------------------------------
 [![code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)![Compatibility](https://img.shields.io/badge/compatible%20with-python3.6.x-blue.svg)
 
-Wimpy is a non-flexible, non-scalable, very wimpy machine-learning library built on numpy and pandas.  Notably, it contains very unoptimized implementations of popular machine learning algorithms, **from scratch**, without scikit-learn, Tensorflow or pytorch.
+Wimpy is a non-flexible, non-scalable, very wimpy machine-learning library built on numpy and pandas.  Notably, it contains various implementations of popular machine learning algorithms, **from scratch**, without scikit-learn, Tensorflow or pytorch, that can be extended and used for a variety of purposes. 
